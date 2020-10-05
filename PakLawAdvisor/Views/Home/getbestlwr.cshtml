@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "getbestlwr";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<div class="row">
+    <article class="col-md-6 col-md-offset-1" style="background-color:white;">
+        
+@using (Ajax.BeginForm("getbestlwr", "Home", 
+    new AjaxOptions { 
+                        HttpMethod="POST",
+                        UpdateTargetId = "dataset", 
+                        InsertionMode=InsertionMode.Replace
+                      }))
+       
+        {
+            @Html.AntiForgeryToken()
+    
+            @Html.ValidationSummary(true)
+    <div class="row section-top ">Find Best Lawyer</div>
+ 
+    <div class="row section-body">
+        <br/>
+
+                    <div class="row ">
+                            <div class="col-md-3 col-md-offset-1" style="padding-left:3px;padding-right:0px">
+                                <label>Select legal issue</label>
+                            </div>
+                            <div class="col-md-4 " style="padding-left:0px;padding-right:0px">
+                                @Html.DropDownList("crime", (SelectList)ViewBag.crim_list_dp,"Select Crime type", new {@required="required",@class="form-control", id = "crime", style = "padding-top:5px;padding-bottom:5px" })
+                            </div>
+                    </div><br/>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1" style="padding-left:0px;padding-right:0px">
+                            <label>City</label>
+                        </div>
+                        <div class="col-md-4" style="padding-left:0px;padding-right:0px">
+                            @Html.DropDownList("city", (SelectList)ViewBag.city_list_dp,"Select City", new {@required="required",id = "city" ,@class="form-control",style="padding-top:5px;padding-bottom:5px"})
+                        </div>
+                     </div><br/>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-5" style="padding-left:25px;padding-right:0px">
+                            <input id="Submit1" type="submit" value="Search Lawyers" class="form-control btn-primary" style="padding-top:5px; padding-bottom:5px;" />
+                        </div>
+                    </div>
+        <div>&nbsp;</div>
+        </div>
+        }
+        <br />
+        <div class="row" id="dataset" >
+
+        </div>
+        <br />
+     
+    </article>
+
+    <aside class="col-md-3 col-md-offset-1">
+        <div class="section-top form-control" >Why Do you need a Lawyer?</div>
+        <div class="section-body">
+        <p style="padding-left:7px;">Don't be intimidated by the thought of hiring a lawyer.  Their job is to help you find the best solution to your legal issue.  Here are some examples of when it is best to hire a lawyer:</p>
+        <ul>
+            <li>You were in a car accident, slip and fall, or other accident and suffered an injury.</li>
+            <li> You were accused of a crime or other violation.</li>
+            <li> You’re facing a family problem such as divorce or child custody dispute.</li>
+
+        </ul>
+            <p style="padding-left:7px;"> If any of these sounds like you, you should consider talking with several lawyers before choosing one.  Get started now by browsing or searching for lawyers who match your needs.</p>
+    </div>
+    </aside>
+
+
+
+
+</div>

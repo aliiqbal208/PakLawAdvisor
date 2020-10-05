@@ -1,0 +1,61 @@
+﻿@model PakLawAdvisor.Models.ccp
+@{
+    ViewBag.Title = "view_detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-8 col-md-offset-1">
+      
+        <div class="row section-top">
+            <div class="col-md-3 " style="border-right:#83BDD0 1px solid">Heading  </div>
+            <div class="col-md-8 ">Detail</div>
+        </div>
+        <div class="row section-body">
+
+            <div class="col-md-3 " style="border-right:#83BDD0 1px solid">Act Id </div>
+            <div class="col-md-8 ">@Model.Sec_id</div>
+        </div>
+        <div class="row section-body">
+
+            <div class="col-md-3 " >Offence Defination</div>
+            <div class="col-md-8" style="border-left:#83BDD0 1px solid">@Model.Offence</div>
+        </div>
+        <div class="row section-body">
+
+            <div class="col-md-3 " style="border-right:#83BDD0 1px solid">Whether the police may arrest without warrant or not</div>
+            <div class="col-md-8 ">@Model.Arrestable</div>
+        </div>
+        <div class="row section-body">
+
+            <div class="col-md-3 " style="border-right:#83BDD0 1px solid">Whether Bailable or not</div>
+            <div class="col-md-8 ">@Model.bailable</div>
+        </div>
+        <div class="row section-body">
+
+            <div class="col-md-3 " style="border-right:#83BDD0 1px solid">Whether a warrant or a summon shall ordinarily be issued in the first instance.</div>
+            <div class="col-md-8 ">@Model.warrentable</div>
+        </div>
+        <div class="row section-body">
+
+            <div class="col-md-3 " style="border-right:#83BDD0 1px solid">whether compoundable or not</div>
+            <div class="col-md-8 ">@Model.Compoundable</div>
+        </div>
+        <div class="row section-body">
+
+            <div class="col-md-3 " style="border-right:#83BDD0 1px solid">Punishment under the PPC</div>
+            <div class="col-md-8 ">@Model.punishment</div>
+        </div>
+        <div class="row section-body">
+
+            <div class="col-md-3 " style="border-right:#83BDD0 1px solid">By what Court triable</div>
+            <div class="col-md-8 ">@Model.tryable_court</div>
+        </div>
+        
+       
+
+      </div>
+    <div class="col-md-3">
+
+    </div>
+
+</div>

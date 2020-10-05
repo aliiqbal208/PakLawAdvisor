@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PakLawAdvisor.Models.lawyer>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+@{
+    ViewBag.Title = "lawyer_list";
+    Layout = "~/Views/Shared/_adminlayout.cshtml";
+}
+
+<div class="row ">
+    <br /> <br />
+    <div class="col-md-8 col-md-offset-2 section-body " style="overflow: scroll ;max-height: 450px; ">
+        @using (@Ajax.BeginForm("searchLawyer", "Admin", new AjaxOptions()
+                                                {
+                                                    HttpMethod = "POST",
+                                                    UpdateTargetId = "Related_lawyers",
+                                                    InsertionMode = InsertionMode.Replace
+                                                }))
+        {
+
+            <div class="section-top row"><strong> Lawyers List</strong></div><br />
+            <div class=" row">
+                <div class="col-md-5 " style="padding-right:0px;padding-left:40px">
+                    <strong>Search Lawyer By Name</strong>
+                </div>
+                <div class="col-md-4" style="padding-left:0px;padding-right:0px">
+                    <input type="text" placeholder="Search lawyer by Name" name="lwr_search" id="lwr_search" required="required" />
+                </div>
+                <div class="col-md-2" style="padding-left:0px">
+                    <input type="submit" class="btn-primary" id="lwr_searchbtn" value="Search">
+                </div>
+            </div><br />
+
+        }
+        <div id="Related_lawyers">
+
+        </div>
+
+
+        @foreach (var lwr in Model)
+        {
+            <div class="row section-body">
+                <div class="col-md-5 col-md-offset-1 ">
+
+                    <b>   @lwr.First_Name &nbsp; @lwr.Second_Name  </b>
+                    <br />
+                    <label>Court Level:</label>
+                    @lwr.court_Level <br />
+                    <label>City:</label>
+                    @lwr.Area <br />
+                </div>
+                <div class="col-md-2 col-md-offset-1 ">
+                    <img src="@Url.Content(@lwr.photo)" alt="lawyer picture" style="height:100%; width:100%" />
+                </div>
+                <div class="col-md-2">
+                    @Html.ActionLink("View Profile", "LawyerProfile", new { id = @lwr.lwr_id })
+                </div>
+            </div><br />
+        }
+
+    </div>
+
+
+
+
+
+
+
+    <div class="col-md-3">
+
+    </div>
+    </div>
+
+
+<div id="ch">
+
+</div>

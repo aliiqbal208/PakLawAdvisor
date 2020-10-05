@@ -1,0 +1,199 @@
+﻿@model PakLawAdvisor.Models.lawyer
+
+@{
+    ViewBag.Title = "File Upload in MVC3 By Using Razor and Preview Uploaded File";
+    Layout = "~/Views/Shared/_PrivateLayout.cshtml";
+   }
+<div class="row">
+        <div class="col-md-10 col-md-offset-1 section-top">Edit Profile </div>
+        <div class="col-md-10 col-md-offset-1 section-body">
+            <div class="row">
+                <div class="col-md-7 col-md-offset-1 section-body">
+                    @using (Html.BeginForm("Save_profile", "Lawyer"))
+                    {<br />
+                        <div class=" row">
+                            <div class="col-md-4">
+                                <b>First Name </b>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.First_Name, new { @class="form-control" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class=" row ">
+                            <div class="col-md-4">
+                                <b>Second Name </b>
+                            </div>
+                            <div class="col-md-6">
+
+                                @Html.TextBoxFor(model => model.Second_Name, new { @class = "form-control" })
+                            </div>
+                        </div><br />
+                        <div class=" row ">
+                            <div class="col-md-4">
+                                <b>Email  </b>
+                            </div>
+                            <div class="col-md-6">
+
+                                @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <b>Date Of birth</b>
+                                </div>
+                                <div class="col-md-6 ">
+                                     @Model.DOB.ToString() 
+                                </div>
+                            </div><br />
+                          <div class="row">
+                            <div class="col-md-4">
+                               &nbsp;
+                            </div>
+                            <div class="col-md-6 ">
+                                @Html.TextBoxFor(model => model.DOB, "{0:"+@Model.DOB.ToString()+"}", new { type = "date", @class = "form-control" })
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <b>City</b>
+                            </div>
+                            <div class="col-md-6 ">
+                                   @if(Model.Area!=null){
+                                     var str=Model.Area.ToString();
+                                    @Html.DropDownListFor(m => m.Area, (SelectList)ViewBag.statevalues,""+str, new { @class = "form-control", id = "state" })
+                                   }
+                                   else
+                                   {
+                                    @Html.DropDownListFor(m => m.Area, (SelectList)ViewBag.statevalues, "select City", new { @class = "form-control", id = "state" })
+                                   }
+                                   
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <b>Address</b>
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", style = "width:100%" })
+                            </div>
+                        </div><br />
+    <div class="row">
+        <div class="col-md-4">
+            <b>Vision:</b>
+        </div>
+        <div class="col-md-7">
+            @Html.TextAreaFor(model => model.Vision, new { @class = "form-control", style = "width:100%" })
+        </div>
+    </div><br />
+    <div class="row">
+        <div class="col-md-4">
+            <b>Objective :</b>
+        </div>
+        <div class="col-md-7">
+            @Html.TextAreaFor(model => model.Objective, new { @class = "form-control", style = "width:100%" })
+        </div>
+    </div><br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <b>Experience </b>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(model => model.Experience,new List<SelectListItem>
+
+                 {
+                     new SelectListItem{ Text="Less than 1 Year", Value = "0" }, 
+                     new SelectListItem{ Text="1 Year", Value = "1" },
+                     new SelectListItem{ Text="2 Year", Value = "2" },
+                     new SelectListItem{ Text="3 Year", Value = "3" },
+                     new SelectListItem{ Text="4 Year", Value = "4" },
+                     new SelectListItem{ Text="5 Year", Value = "5" },
+                     new SelectListItem{ Text=" 5 to 10 year", Value = "6" },
+                     new SelectListItem{ Text="10 year", Value = "10" }}
+                      ,@Model.Experience.ToString()+" Year"    
+                     ,new { @class = "form-control"})
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <b>court Lavel</b>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.court_Level, new { @class = "form-control", value = @Model.court_Level })
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-4">
+                                <input type="submit" class="btn-primary" name="save_btn" value="Save Changes">
+                            </div>
+                        </div><br />
+                    }
+                </div>
+                <div class="col-md-3 section-body">
+                    @using (Html.BeginForm("Edit_Profile", "Lawyer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {           <b><u>Change Profile Picture</u></b>
+                        <div class=" row">
+                            <img src="@Url.Content(@Model.photo)" alt="lawyer pic" style="width:180px;height:210px" />
+                            <input type="file" name="file" />
+                            <input type="submit" value="Upload" name="Command" />
+                        </div>
+                        <div>
+                            @ViewBag.Message
+                        </div>
+                    }
+                </div>
+            </div><br />
+                   <div class="row">
+                       <div class="col-md-10 col-md-offset-1 section-top"> Add your Best Law categories</div>
+                  </div>
+                  @using (Html.BeginForm("SaveCategries", "lawyer", FormMethod.Post))
+                  
+                  {<div class="row">
+                    
+                    <div class="col-md-10 col-md-offset-1 section-body" style="overflow:scroll;height:350px">
+                        @foreach (var c in ViewBag.categories)
+                        {
+                            <label><input type="checkbox" name="category" value="@c.Law_cat_id" />@c.catgry_name</label><br />
+
+                        }
+                    </div>
+                </div><br />
+    <div class="row">
+
+        <div class="col-md-3 col-md-offset-8" >
+            <input type="submit" class="btn-primary" value="Save Selected Categories" />
+        </div>
+    </div><br />
+                  }
+
+          
+
+        </div>
+
+              
+
+    </div>
+
+
+
+  
+@section scripts
+{
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#State').change(function () {
+          
+            $.getJSON('@Url.Action("GetCities", "Lawyer")', { state: $(this).val() }, function (data) {
+                var items = '<option>Select a District</option>';
+                $.each(data, function (i, district) {
+                    items += "<option value='" + district.Value + "'>" + district.Text + "</option>";
+                });
+                $('#District').html(items);
+            });
+        });
+    });
+    </script>}

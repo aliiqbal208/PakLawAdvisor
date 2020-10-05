@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pladbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="ADMIN_ID" />
+    </Key>
+    <Property Name="ADMIN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="LAST_NAME" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="PHOTOPATH" Type="varchar" MaxLength="250" />
+    <Property Name="PHOTONAME" Type="varchar" MaxLength="250" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="250" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="books">
+    <Key>
+      <PropertyRef Name="Book_id" />
+    </Key>
+    <Property Name="Book_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="250" />
+    <Property Name="file" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="case_exmpl">
+    <Key>
+      <PropertyRef Name="case_id" />
+    </Key>
+    <Property Name="case_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cat_name" Type="varchar" MaxLength="50" />
+    <Property Name="lwr_id" Type="int" />
+    <Property Name="Date_time" Type="datetime" Precision="0" />
+    <Property Name="discription" Type="varchar" MaxLength="3200" />
+    <Property Name="cat_id" Type="int" />
+    <Property Name="Summary" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="ccp">
+    <Key>
+      <PropertyRef Name="CCP_id" />
+    </Key>
+    <Property Name="CCP_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sec_id" Type="varchar" MaxLength="1024" />
+    <Property Name="Offence" Type="varchar" MaxLength="1024" />
+    <Property Name="Arrestable" Type="varchar" MaxLength="1024" />
+    <Property Name="warrentable" Type="varchar" MaxLength="1024" />
+    <Property Name="bailable" Type="varchar" MaxLength="1024" />
+    <Property Name="Compoundable" Type="varchar" MaxLength="1024" />
+    <Property Name="punishment" Type="varchar" MaxLength="1024" />
+    <Property Name="tryable_court" Type="varchar" MaxLength="1024" />
+    <Property Name="crime_cat_id" Type="int" />
+  </EntityType>
+  <EntityType Name="citation">
+    <Key>
+      <PropertyRef Name="CITATION_ID" />
+    </Key>
+    <Property Name="CITATION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CAT_ID" Type="varchar" MaxLength="500" />
+    <Property Name="TITLE" Type="varchar" MaxLength="250" />
+    <Property Name="DETAIL" Type="varchar" MaxLength="5000" />
+    <Property Name="COMPLAINENT_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="SUSPECTED_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="RESULT" Type="int" />
+    <Property Name="DATE_TIME" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="cities">
+    <Key>
+      <PropertyRef Name="City_Id" />
+    </Key>
+    <Property Name="City_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Province_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="State_id" Type="int" />
+  </EntityType>
+  <EntityType Name="civil_law_panel">
+    <Key>
+      <PropertyRef Name="civil_law_id" />
+    </Key>
+    <Property Name="civil_law_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="image_slider">
+    <Key>
+      <PropertyRef Name="IMAGE_ID" />
+    </Key>
+    <Property Name="IMAGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="TITLE" Type="varchar" MaxLength="500" />
+    <Property Name="DETAIL" Type="varchar" MaxLength="2000" />
+    <Property Name="PATH" Type="varchar" MaxLength="1000" />
+    <Property Name="ACTION" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="law_catagry">
+    <Key>
+      <PropertyRef Name="Law_cat_id" />
+    </Key>
+    <Property Name="Law_cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="catgry_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="lawyer">
+    <Key>
+      <PropertyRef Name="lwr_id" />
+    </Key>
+    <Property Name="lwr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Second_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Area" Type="varchar" MaxLength="50" />
+    <Property Name="Experience" Type="varchar" MaxLength="50" />
+    <Property Name="court_Level" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="datetime" Precision="0" />
+    <Property Name="Phone_No" Type="varchar" MaxLength="50" />
+    <Property Name="photo" Type="varchar" MaxLength="250" />
+    <Property Name="Address" Type="varchar" MaxLength="250" />
+    <Property Name="Vision" Type="varchar" MaxLength="1012" />
+    <Property Name="Objective" Type="varchar" MaxLength="1012" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="250" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="250" />
+    <Property Name="IS_ACTIVE" Type="bool" />
+    <Property Name="VERIFY_CODE" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="lwr_catgry">
+    <Key>
+      <PropertyRef Name="lwr_cat_id" />
+    </Key>
+    <Property Name="lwr_cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lwr_id" Type="int" />
+    <Property Name="cat_id" Type="int" />
+  </EntityType>
+  <EntityType Name="news">
+    <Key>
+      <PropertyRef Name="news_id" />
+    </Key>
+    <Property Name="news_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="64" />
+    <Property Name="discription" Type="varchar" MaxLength="3200" />
+    <Property Name="date_time" Type="datetime" Precision="0" />
+    <Property Name="Summary" Type="varchar" MaxLength="512" />
+  </EntityType>
+  <EntityType Name="states">
+    <Key>
+      <PropertyRef Name="State_id" />
+    </Key>
+    <Property Name="State_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="State_Name" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <Association Name="city_to_state">
+    <End Role="states" Type="Self.states" Multiplicity="0..1" />
+    <End Role="cities" Type="Self.cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="states">
+        <PropertyRef Name="State_id" />
+      </Principal>
+      <Dependent Role="cities">
+        <PropertyRef Name="State_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_case_cat">
+    <End Role="law_catagry" Type="Self.law_catagry" Multiplicity="0..1" />
+    <End Role="case_exmpl" Type="Self.case_exmpl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="law_catagry">
+        <PropertyRef Name="Law_cat_id" />
+      </Principal>
+      <Dependent Role="case_exmpl">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_lwr_caseExample">
+    <End Role="lawyer" Type="Self.lawyer" Multiplicity="0..1" />
+    <End Role="case_exmpl" Type="Self.case_exmpl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lawyer">
+        <PropertyRef Name="lwr_id" />
+      </Principal>
+      <Dependent Role="case_exmpl">
+        <PropertyRef Name="lwr_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_lwrcat_cat">
+    <End Role="law_catagry" Type="Self.law_catagry" Multiplicity="0..1" />
+    <End Role="lwr_catgry" Type="Self.lwr_catgry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="law_catagry">
+        <PropertyRef Name="Law_cat_id" />
+      </Principal>
+      <Dependent Role="lwr_catgry">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_lwrcat_lwr">
+    <End Role="lawyer" Type="Self.lawyer" Multiplicity="0..1" />
+    <End Role="lwr_catgry" Type="Self.lwr_catgry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lawyer">
+        <PropertyRef Name="lwr_id" />
+      </Principal>
+      <Dependent Role="lwr_catgry">
+        <PropertyRef Name="lwr_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="law_cat_ccp_fk">
+    <End Role="law_catagry" Type="Self.law_catagry" Multiplicity="0..1" />
+    <End Role="ccp" Type="Self.ccp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="law_catagry">
+        <PropertyRef Name="Law_cat_id" />
+      </Principal>
+      <Dependent Role="ccp">
+        <PropertyRef Name="crime_cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pladbModelStoreContainer">
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="books" EntityType="Self.books" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="case_exmpl" EntityType="Self.case_exmpl" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="ccp" EntityType="Self.ccp" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="citation" EntityType="Self.citation" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="cities" EntityType="Self.cities" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="civil_law_panel" EntityType="Self.civil_law_panel" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="image_slider" EntityType="Self.image_slider" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="law_catagry" EntityType="Self.law_catagry" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="lawyer" EntityType="Self.lawyer" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="lwr_catgry" EntityType="Self.lwr_catgry" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="news" EntityType="Self.news" Schema="pladb" store:Type="Tables" />
+    <EntitySet Name="states" EntityType="Self.states" Schema="pladb" store:Type="Tables" />
+    <AssociationSet Name="city_to_state" Association="Self.city_to_state">
+      <End Role="states" EntitySet="states" />
+      <End Role="cities" EntitySet="cities" />
+    </AssociationSet>
+    <AssociationSet Name="fk_case_cat" Association="Self.fk_case_cat">
+      <End Role="law_catagry" EntitySet="law_catagry" />
+      <End Role="case_exmpl" EntitySet="case_exmpl" />
+    </AssociationSet>
+    <AssociationSet Name="fk_lwr_caseExample" Association="Self.fk_lwr_caseExample">
+      <End Role="lawyer" EntitySet="lawyer" />
+      <End Role="case_exmpl" EntitySet="case_exmpl" />
+    </AssociationSet>
+    <AssociationSet Name="fk_lwrcat_cat" Association="Self.fk_lwrcat_cat">
+      <End Role="law_catagry" EntitySet="law_catagry" />
+      <End Role="lwr_catgry" EntitySet="lwr_catgry" />
+    </AssociationSet>
+    <AssociationSet Name="fk_lwrcat_lwr" Association="Self.fk_lwrcat_lwr">
+      <End Role="lawyer" EntitySet="lawyer" />
+      <End Role="lwr_catgry" EntitySet="lwr_catgry" />
+    </AssociationSet>
+    <AssociationSet Name="law_cat_ccp_fk" Association="Self.law_cat_ccp_fk">
+      <End Role="law_catagry" EntitySet="law_catagry" />
+      <End Role="ccp" EntitySet="ccp" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

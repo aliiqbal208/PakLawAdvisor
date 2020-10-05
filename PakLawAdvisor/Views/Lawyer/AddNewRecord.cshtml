@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "addnewrecord";
+    Layout = "~/Views/Shared/_PrivateLayout.cshtml";
+}
+
+
+<div class="row">
+    <article class="col-md-7 col-md-offset-1 section-body ">
+        <div class="row section-top">Add Your New Record Here!</div>
+        <br /><br />
+        @using (Html.BeginForm("addnewrecord", "lawyer", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Select Category: </label>
+                </div>
+                <div class="col-md-4 ">
+                    @Html.DropDownList("crime", (SelectList)ViewBag.crim_list_dp,"Select crime Type" , new { id = "crime",@required="required" ,@class="form-control"})
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Summary</label>
+                </div>
+                <div class="col-md-8" id="summary">
+                    @Html.TextArea("summary", new {required="required", Style = "width:300px;" })
+                </div>
+            </div><br/>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Description</label>
+                </div>
+                <div class="col-md-9"  id="description">
+                    @Html.TextArea("addDescription", new {@class="form-control",required="required",Style="height:200px;width:300px;" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-push-3">
+                    <input id="Submit" type="submit" value="Add Record" />
+                </div>
+            </div>}
+        @ViewBag.message
+        <br /><br />
+    </article>
+</div>

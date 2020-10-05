@@ -1,0 +1,58 @@
+﻿@model PakLawAdvisor.Models.Prediction
+@{
+    ViewBag.Title = "GetLawPredictionComp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 section-top">
+        <h2>Get Law Prediction</h2>
+    </div>
+    <div class=" col-md-10 col-md-offset-1 section-body">
+
+        <input type="hidden" name="success" id="comp" value="@Model.Complainentvalue" />
+        <input type="hidden" name="success" id="susp" value="@Model.Suspetedvalue" />
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <p>You Success Chances :@Model.Complainentvalue %</p> 
+                <p>Opponent Success Chances :@Model.Suspetedvalue %</p>
+             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1" id="canvas-holder" style="float:right">
+                <canvas id="chart-area" width="400" height="400" />
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    var suspectvalue = document.getElementById("susp").value;
+    var compValue = document.getElementById("comp").value;
+    
+    var pieData = [
+            {
+                value: suspectvalue,
+                color: "#F7464A",
+                highlight: "#FF5A5E",
+                label: "Opponent Success Chances"
+            },
+            {
+                value: compValue,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Your Success"
+            }
+
+    ];
+    window.onload = function () {
+        
+        var ctx = document.getElementById("chart-area").getContext("2d");
+        
+        window.myPie = new Chart(ctx).Pie(pieData);
+    };
+    </script>

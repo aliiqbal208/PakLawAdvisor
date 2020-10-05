@@ -1,0 +1,91 @@
+﻿@model PakLawAdvisor.Models.SignUp
+<script src="~/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+function checkPasswordMatch() {
+    var pass = $("#Password").val();
+    var confirmPassword = $("#ConfirmPassword").val();
+   
+    if (pass != confirmPassword)
+        $("#divCheckPasswordMatch").html("Passwords do not match!");
+    else
+        $("#divCheckPasswordMatch").html("Passwords match.");
+}
+</script>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Sign Up</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        
+
+        <div class ="row">
+            <div class="editor-label col-md-2 col-md-offset-2">
+                @Html.LabelFor(model => model.First_Name)
+            </div>
+            <div class="editor-field  col-md-4">
+                @Html.TextBoxFor(model => model.First_Name, new { pattern = "[A-Za-z]{3}", title = "Enter correct name",@class="form-control", type = "text", required = "required" })
+                @Html.ValidationMessageFor(model => model.First_Name)
+            </div>
+        </div>
+       
+        <div class="row ">
+            <div class="editor-label col-md-2 col-md-offset-2">
+                @Html.LabelFor(model => model.Second_Name)
+            </div>
+            <div class="editor-field col-md-4 ">
+                @Html.TextBoxFor(model => model.Second_Name, new { pattern = "[A-Za-z]{1,50}", title = "Enter correct name", @class = "form-control", type = "text", required = "required" })
+                @Html.ValidationMessageFor(model => model.Second_Name)
+            </div>
+         </div>
+        <div class="row">
+            <div class="editor-label col-md-2 col-md-offset-2">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field col-md-4 ">
+                @Html.TextBoxFor(model => model.Email, new { type = "email", @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="row">
+            <div class="editor-label col-md-2 col-md-offset-2">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field col-md-4">
+                @Html.TextBoxFor(model => model.Password, new { pattern = "[A-Za-z0-9]{3}{8}", @class = "form-control", type = "password", id = "Password", required = "required" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+        <div class="row">
+            <div class="editor-label col-md-2 col-md-offset-2">
+                <label>Confirm Password</label>
+            </div>
+            <div class="editor-field col-md-4">
+                @Html.TextBoxFor(model => model.ConfirmPassword, new { type = "password", id = "Password", @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+            @Html.HiddenFor(model => model.IS_ACTIVE, new { value=false} )
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-4">
+                <input type="submit" class="btn-primary " value="Sign Up" />
+            </div>
+        </div>
+       
+            
+</fieldset>
+    }
+
+    
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

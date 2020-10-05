@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b9086d7b7af44a4f875f79aa5b694338" Name="Diagram1" ZoomLevel="70">
+        <EntityTypeShape EntityType="pladbModel.admin" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pladbModel.book" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pladbModel.case_exmpl" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pladbModel.ccp" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pladbModel.city" Width="1.5" PointX="8" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pladbModel.civil_law_panel" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pladbModel.law_catagry" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pladbModel.lwr_catgry" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pladbModel.news" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pladbModel.state" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="pladbModel.fk_case_cat" ManuallyRouted="false" />
+        <AssociationConnector Association="pladbModel.law_cat_ccp_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="pladbModel.city_to_state" ManuallyRouted="false" />
+        <AssociationConnector Association="pladbModel.fk_lwrcat_cat" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="pladbModel.citation" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="pladbModel.lawyer" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="pladbModel.fk_lwr_caseExample" />
+        <AssociationConnector Association="pladbModel.fk_lwrcat_lwr" />
+        <EntityTypeShape EntityType="pladbModel.image_slider" Width="1.5" PointX="12.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

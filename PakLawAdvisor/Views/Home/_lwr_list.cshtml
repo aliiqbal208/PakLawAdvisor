@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<PakLawAdvisor.Models.lawyer>
+<div class="col-md-12" style="overflow:scroll;height:500px;">
+    @foreach (var obj in Model)
+    {
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-1" style="">
+                @obj.First_Name @obj.Second_Name
+                @obj.court_Level
+                @obj.Experience
+                @obj.Address
+                @obj.Area
+            </div>
+            <div class="col-md-3" style="background-color:white;height:inherit;">
+                <img src="@Url.Content(@obj.photo)" alt="lawyer picture" style="width:80%" />
+                @Html.ActionLink("View Profile", "LawyerProfile", new { id = @obj.lwr_id })
+            </div>
+        </div>
+    }
+</div>

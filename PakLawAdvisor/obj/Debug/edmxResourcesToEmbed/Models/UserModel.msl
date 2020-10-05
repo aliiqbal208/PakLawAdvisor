@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pladbModelStoreContainer" CdmEntityContainer="PLAdbEntities">
+    <EntitySetMapping Name="lawyers">
+      <EntityTypeMapping TypeName="pladbModel.lawyer">
+        <MappingFragment StoreEntitySet="lawyer">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Objective" ColumnName="Objective" />
+          <ScalarProperty Name="Vision" ColumnName="Vision" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="catgry_id" ColumnName="catgry_id" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="Licence_No" ColumnName="Licence_No" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="court_Level" ColumnName="court_Level" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Second_Name" ColumnName="Second_Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="lwr_id" ColumnName="lwr_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="civil_law_panel">
+      <EntityTypeMapping TypeName="pladbModel.civil_law_panel">
+        <MappingFragment StoreEntitySet="civil_law_panel">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="civil_law_id" ColumnName="civil_law_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="law_catagry">
+      <EntityTypeMapping TypeName="pladbModel.law_catagry">
+        <MappingFragment StoreEntitySet="law_catagry">
+          <ScalarProperty Name="catgry_name" ColumnName="catgry_name" />
+          <ScalarProperty Name="Law_cat_id" ColumnName="Law_cat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lwr_catgry">
+      <EntityTypeMapping TypeName="pladbModel.lwr_catgry">
+        <MappingFragment StoreEntitySet="lwr_catgry">
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="lwr_id" ColumnName="lwr_id" />
+          <ScalarProperty Name="lwr_cat_id" ColumnName="lwr_cat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="case_exmpl">
+      <EntityTypeMapping TypeName="pladbModel.case_exmpl">
+        <MappingFragment StoreEntitySet="case_exmpl">
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="Cat_name" ColumnName="Cat_name" />
+          <ScalarProperty Name="lwr_id" ColumnName="lwr_id" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="discription" ColumnName="discription" />
+          <ScalarProperty Name="Date_time" ColumnName="Date_time" />
+          <ScalarProperty Name="case_id" ColumnName="case_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="pladbModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ccps">
+      <EntityTypeMapping TypeName="pladbModel.ccp">
+        <MappingFragment StoreEntitySet="ccp">
+          <ScalarProperty Name="crime_cat_id" ColumnName="crime_cat_id" />
+          <ScalarProperty Name="tryable_court" ColumnName="tryable_court" />
+          <ScalarProperty Name="punishment" ColumnName="punishment" />
+          <ScalarProperty Name="Compoundable" ColumnName="Compoundable" />
+          <ScalarProperty Name="bailable" ColumnName="bailable" />
+          <ScalarProperty Name="warrentable" ColumnName="warrentable" />
+          <ScalarProperty Name="Arrestable" ColumnName="Arrestable" />
+          <ScalarProperty Name="Offence" ColumnName="Offence" />
+          <ScalarProperty Name="Sec_id" ColumnName="Sec_id" />
+          <ScalarProperty Name="CCP_id" ColumnName="CCP_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="pladbModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Second_Name" ColumnName="Second_Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="Usr_id" ColumnName="Usr_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="pladbModel.city">
+        <MappingFragment StoreEntitySet="cities">
+          <ScalarProperty Name="State_id" ColumnName="State_id" />
+          <ScalarProperty Name="Province_Name" ColumnName="Province_Name" />
+          <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+          <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="states">
+      <EntityTypeMapping TypeName="pladbModel.state">
+        <MappingFragment StoreEntitySet="states">
+          <ScalarProperty Name="State_Name" ColumnName="State_Name" />
+          <ScalarProperty Name="State_id" ColumnName="State_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="books1">
+      <EntityTypeMapping TypeName="pladbModel.books">
+        <MappingFragment StoreEntitySet="books">
+          <ScalarProperty Name="file" ColumnName="file" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Book_id" ColumnName="Book_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news">
+      <EntityTypeMapping TypeName="pladbModel.news">
+        <MappingFragment StoreEntitySet="news">
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="date_time" ColumnName="date_time" />
+          <ScalarProperty Name="discription" ColumnName="discription" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

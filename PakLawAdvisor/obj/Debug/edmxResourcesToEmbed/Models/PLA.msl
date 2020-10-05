@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pladbModelStoreContainer" CdmEntityContainer="pladbEntities">
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="pladbModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PHOTONAME" ColumnName="PHOTONAME" />
+          <ScalarProperty Name="PHOTOPATH" ColumnName="PHOTOPATH" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="books">
+      <EntityTypeMapping TypeName="pladbModel.book">
+        <MappingFragment StoreEntitySet="books">
+          <ScalarProperty Name="Book_id" ColumnName="Book_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="file" ColumnName="file" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="case_exmpl">
+      <EntityTypeMapping TypeName="pladbModel.case_exmpl">
+        <MappingFragment StoreEntitySet="case_exmpl">
+          <ScalarProperty Name="case_id" ColumnName="case_id" />
+          <ScalarProperty Name="Cat_name" ColumnName="Cat_name" />
+          <ScalarProperty Name="lwr_id" ColumnName="lwr_id" />
+          <ScalarProperty Name="Date_time" ColumnName="Date_time" />
+          <ScalarProperty Name="discription" ColumnName="discription" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ccps">
+      <EntityTypeMapping TypeName="pladbModel.ccp">
+        <MappingFragment StoreEntitySet="ccp">
+          <ScalarProperty Name="CCP_id" ColumnName="CCP_id" />
+          <ScalarProperty Name="Sec_id" ColumnName="Sec_id" />
+          <ScalarProperty Name="Offence" ColumnName="Offence" />
+          <ScalarProperty Name="Arrestable" ColumnName="Arrestable" />
+          <ScalarProperty Name="warrentable" ColumnName="warrentable" />
+          <ScalarProperty Name="bailable" ColumnName="bailable" />
+          <ScalarProperty Name="Compoundable" ColumnName="Compoundable" />
+          <ScalarProperty Name="punishment" ColumnName="punishment" />
+          <ScalarProperty Name="tryable_court" ColumnName="tryable_court" />
+          <ScalarProperty Name="crime_cat_id" ColumnName="crime_cat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="pladbModel.city">
+        <MappingFragment StoreEntitySet="cities">
+          <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+          <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+          <ScalarProperty Name="Province_Name" ColumnName="Province_Name" />
+          <ScalarProperty Name="State_id" ColumnName="State_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="civil_law_panel">
+      <EntityTypeMapping TypeName="pladbModel.civil_law_panel">
+        <MappingFragment StoreEntitySet="civil_law_panel">
+          <ScalarProperty Name="civil_law_id" ColumnName="civil_law_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="law_catagry">
+      <EntityTypeMapping TypeName="pladbModel.law_catagry">
+        <MappingFragment StoreEntitySet="law_catagry">
+          <ScalarProperty Name="Law_cat_id" ColumnName="Law_cat_id" />
+          <ScalarProperty Name="catgry_name" ColumnName="catgry_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lwr_catgry">
+      <EntityTypeMapping TypeName="pladbModel.lwr_catgry">
+        <MappingFragment StoreEntitySet="lwr_catgry">
+          <ScalarProperty Name="lwr_cat_id" ColumnName="lwr_cat_id" />
+          <ScalarProperty Name="lwr_id" ColumnName="lwr_id" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news">
+      <EntityTypeMapping TypeName="pladbModel.news">
+        <MappingFragment StoreEntitySet="news">
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="discription" ColumnName="discription" />
+          <ScalarProperty Name="date_time" ColumnName="date_time" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="states">
+      <EntityTypeMapping TypeName="pladbModel.state">
+        <MappingFragment StoreEntitySet="states">
+          <ScalarProperty Name="State_id" ColumnName="State_id" />
+          <ScalarProperty Name="State_Name" ColumnName="State_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="citations">
+      <EntityTypeMapping TypeName="pladbModel.citation">
+        <MappingFragment StoreEntitySet="citation">
+          <ScalarProperty Name="DATE_TIME" ColumnName="DATE_TIME" />
+          <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          <ScalarProperty Name="SUSPECTED_NAME" ColumnName="SUSPECTED_NAME" />
+          <ScalarProperty Name="COMPLAINENT_NAME" ColumnName="COMPLAINENT_NAME" />
+          <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="CAT_ID" ColumnName="CAT_ID" />
+          <ScalarProperty Name="CITATION_ID" ColumnName="CITATION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lawyers">
+      <EntityTypeMapping TypeName="pladbModel.lawyer">
+        <MappingFragment StoreEntitySet="lawyer">
+          <ScalarProperty Name="VERIFY_CODE" ColumnName="VERIFY_CODE" />
+          <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="Objective" ColumnName="Objective" />
+          <ScalarProperty Name="Vision" ColumnName="Vision" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="Phone_No" ColumnName="Phone_No" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="court_Level" ColumnName="court_Level" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Second_Name" ColumnName="Second_Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="lwr_id" ColumnName="lwr_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="image_slider">
+      <EntityTypeMapping TypeName="pladbModel.image_slider">
+        <MappingFragment StoreEntitySet="image_slider">
+          <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+          <ScalarProperty Name="PATH" ColumnName="PATH" />
+          <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

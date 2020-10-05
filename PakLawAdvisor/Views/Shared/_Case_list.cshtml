@@ -1,0 +1,24 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model  IPagedList< PakLawAdvisor.Models.case_exmpl>
+
+@foreach (var cx in Model)
+{
+    <div class="row">
+        <div class="col-md-offset-1 col-md-6" style="border:1px solid;background-color:white">
+            @cx.case_id
+            <strong> @cx.Cat_name</strong><br />
+            @cx.Summary<br />
+            @cx.discription<br />
+            @cx.Date_time<br />
+            <p>.........................................</p>
+        </div>
+    </div><br />
+
+}
+
+
+
+    <div class="pagedList">
+        @Html.PagedListPager(Model, page => Url.Action("lwr_Details", new { page }), PagedListRenderOptions.PageNumbersOnly)
+    </div>

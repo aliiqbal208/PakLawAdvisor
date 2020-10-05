@@ -1,0 +1,83 @@
+﻿@model PakLawAdvisor.Models.citation
+
+@{
+    ViewBag.Title = "Delete";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+
+    <div class="col-md-10 col-md-offset-1 section-body">
+
+        <h2>Delete</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <fieldset>
+            <legend>citation</legend>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.CITATION_ID)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.CITATION_ID)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.CAT_ID)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.CAT_ID)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.TITLE)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.TITLE)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.DETAIL)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.DETAIL)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.COMPLAINENT_NAME)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.COMPLAINENT_NAME)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.SUSPECTED_NAME)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.SUSPECTED_NAME)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.RESULT)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.RESULT)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.DATE_TIME)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.DATE_TIME)
+            </div>
+        </fieldset>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                <input type="submit" value="Delete" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        }
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿@model PakLawAdvisor.Models.citation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset class="section-body">
+    <legend>citation</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CITATION_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CITATION_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CAT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CAT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TITLE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TITLE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DETAIL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DETAIL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COMPLAINENT_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COMPLAINENT_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SUSPECTED_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SUSPECTED_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RESULT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RESULT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DATE_TIME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DATE_TIME)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.CITATION_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<PakLawAdvisor.Models.citation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="section-body">
+    <h2>All Citations</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "AddCitation")
+    </p>
+    <table style="" border="1" cellpadding="10">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CITATION_ID)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.TITLE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DETAIL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COMPLAINENT_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SUSPECTED_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RESULT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DATE_TIME)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CITATION_ID)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.TITLE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DETAIL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.COMPLAINENT_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SUSPECTED_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RESULT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DATE_TIME)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.CITATION_ID }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.CITATION_ID  }) |
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.CITATION_ID  })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

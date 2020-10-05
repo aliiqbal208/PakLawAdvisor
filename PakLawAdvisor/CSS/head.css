@@ -1,0 +1,110 @@
+﻿#PLA_title {
+            font-size:48px;
+            font-weight:500;
+            font-family:sans-serif;
+            color:#000000;
+           }
+.nav-bcolor {
+      color: #FFFFFF;
+    font-size: 17px;
+
+    background-color: #036;
+
+}
+.nav-line {
+text-align:center; 
+border-left: 1px solid #83BDD0;
+ padding: 1px 1px 10px;
+ padding-top:10px;
+}
+
+.navbar-inverse {
+    background-color: #036;
+    border: #83BDD0 solid 1px;
+}
+.nav-css  {
+    border-bottom: none;
+    border-left: 1px dotted #83BDD0;
+    color: #FFFFFF;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 100%;
+    padding: 1px 1px 15px;
+}
+
+header{
+    background-color:rgb(165, 245, 187);
+}
+#link_bar li a{
+    padding-top:7px;     padding-right:18px;
+    padding-bottom:10px; padding-left:18px;
+    text-align:center;   float:left;
+    font-weight:bold;
+    background-color:gray;
+    cursor:pointer; display:block;
+    border-left:solid 1px;
+    color:#ffffff;border-color:#ffffff;
+
+  }
+
+li a:link {color:#ffffff;}
+li a:hover {
+              background-color:rgb(140, 161, 195);
+              text-decoration:none;
+              color:#ffffff;
+            }
+ #link_bar a:target { 
+                            background-color:rgb(140, 161, 195);
+                            text-decoration:none;
+                            color:#ffffff;
+                         }
+.section-css {
+    
+    border: #83BDD0 solid 1px;
+}
+.section-top {
+    border: #83BDD0 solid 1px;
+    background-color:#89D4EA;
+    color: #FFFFFF;
+    font-size: 18px;
+    text-align:center;
+    border-bottom-left-radius:2px;
+
+}
+.section-body {
+  border: #83BDD0 solid 1px;
+    background-color:white;
+    color: #767879;
+    font-size: 14px;
+    text-align:left;
+    border-bottom-left-radius:2px;
+    
+
+}
+
+
+
+span.vertical-line{
+  width: 0px;
+  background-color: silver;
+  height: 50px;
+  float: left;
+  border: 1px ridge silver ;
+  margin-left:10px;
+  margin-right:20px;
+  
+}
+.aside_line {
+      width: 100%;text-align:center;
+      vertical-align:central;
+  background-color: silver;
+  padding-bottom:10px;
+  padding-top:10px;
+  float: left;
+  border-bottom: 1px ridge white ;
+  margin-left:5px;
+  margin-right:5px;
+ vertical-align:middle;
+
+}
+

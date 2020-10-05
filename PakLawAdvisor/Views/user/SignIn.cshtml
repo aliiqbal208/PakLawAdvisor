@@ -1,0 +1,23 @@
+﻿@using (Html.BeginForm("SignIn", "user", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+        <div class="row">
+            <span class="col-md-offset-2" style="font-family:Arial; color:red;"><strong>Sorry ! You can't be Sign In Please check following reasons And sign in again correctly </strong> </span>
+        </div><br />
+        <div class="row">
+
+            <ul class=" col-md-offset-2 " style=" color:red;font-family:Arial;">
+                <li> your Provided Email ID or Password is'nt correct  </li>
+                <li> Check your Selected Domain </li>
+                <li> Might be you are get Blocked from Admin </li>
+
+            </ul>
+
+        </div>
+    <p style="min-height:400px"></p>
+
+
+
+}

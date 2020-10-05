@@ -1,0 +1,14 @@
+﻿@model PakLawAdvisor.Models.planew
+@{
+    ViewBag.Title = "news_detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <h4 class="form-control" style="text-align:center; color:white; background-color:#036"><b>@Model.news_title</b></h4>
+
+
+<h2>@Model.news_summary </h2>
+<h4>@Model.news_description</h4>
+@Model.added_time
+
+</div>

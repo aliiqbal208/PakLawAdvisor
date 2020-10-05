@@ -1,0 +1,43 @@
+﻿<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@{
+    ViewBag.Title = "Account_setting";
+    Layout = "~/Views/Shared/_PrivateLayout.cshtml";
+}
+
+
+    <div class="row ">
+      <div class="col-md-10 col-md-offset-1 section-body">
+          <div class="row section-top">Accout setting</div>
+          <div class="row">&nbsp;</div>
+          <div class="row" style="min-height:450px">
+              <div class=" col-md-3" >
+                  <div class="row" style="font-family:Arial;color:darkblue;background-color:#A9A2A2;text-align:center">
+                      <h4 >
+                          @Ajax.ActionLink("Change Password", "changepswd",null, new AjaxOptions()
+                           {
+                               HttpMethod = "GET",
+                               UpdateTargetId = "changepass",
+                               InsertionMode = InsertionMode.Replace
+                           }, new { @style = "color:white" })
+                      </h4>
+                  </div>
+                  <hr style="background-color:#DCD6D6" />
+                <div class="row" style="font-family:Arial;color:darkblue;background-color:#A9A2A2; text-align:center">
+                    <h4 >
+                        @Ajax.ActionLink("Deactive your Account", "deactive_act",null, new AjaxOptions()
+                {
+                    HttpMethod = "GET",
+                    UpdateTargetId = "changepass",
+                    InsertionMode = InsertionMode.Replace
+                }, new { @style = "color:white" })
+                    </h4>
+                </div>
+
+              </div>
+
+              <div class=" col-md-9" id="changepass"></div>
+               
+          </div>
+    </div>
+  </div> 

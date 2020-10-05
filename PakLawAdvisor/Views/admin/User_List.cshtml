@@ -1,0 +1,94 @@
+﻿<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+@model IEnumerable<PakLawAdvisor.Models.lawyer>
+
+@{
+    ViewBag.Title = "User_List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script type="text/javascript">
+
+    function Confirmblock()
+      {
+          var x = confirm("Are you sure you want to block this lawyer?");
+          if (x) {
+              return true;
+          }
+          else
+              return false;
+    }
+
+    function Confirmunblock()
+    {
+        var x = confirm("Are you sure you want to unblock this lawyer?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+ 
+</script>
+<br/><br/>
+<div class="col-md-12 ">
+    <div class="row ">
+        <div class="col-md-5 col-md-offset-1 section-body" style="height:800px;overflow:scroll;">
+            <div class="row section-top">Unblocked user List</div>
+           
+                @foreach (var lwr in Model.Where(x => x.IS_ACTIVE==true))
+                {
+                    <div class="row">
+                        <div class="col-md-8">
+
+                            <b>   @lwr.First_Name &nbsp; @lwr.Second_Name  </b>
+                            <br />
+                            <label>Email:</label>
+                            @lwr.EMAIL<br />
+                            <label>Status</label>
+                            @*<b> @lwr.Status  </b>*@
+                           
+                            <br />
+                        </div>
+                        <div class="col-md-2">
+                            @using (Html.BeginForm("block_lawyer", "Admin", new { id = @lwr.lwr_id }))
+                            {
+                                <input type="submit" value="Block Lawyer" onclick="return Confirmblock();">
+                            }
+                        </div>
+                    </div>
+                    <br />
+                }
+           
+        </div>
+        <div class="col-md-5  section-body  " style="margin-left:5px;height:800px;overflow:scroll;">
+            <div class="row section-top">blocked user List</div>
+            @foreach (var lwr in Model.Where(x => x.IS_ACTIVE==false))
+            { 
+                <div class="row ">
+                    <div class="col-md-8" >
+
+                        <b>   @lwr.First_Name &nbsp; @lwr.Second_Name  </b>
+                        <br />
+                        <label>Email:</label>
+                        @lwr.EMAIL <br />
+                        @*<label>Status</label>
+                        <b> @usr.Status  </b>*@
+
+                    </div>
+                    <div class="col-md-4">
+                        @using (Html.BeginForm("unblock_lawyer", "Admin", new { id = @lwr.lwr_id }))
+                        {
+                            <input type="submit" value="UnBlock Lawyer" onclick="return Confirmunblock();">
+                        }
+                    </div>
+
+                </div> <hr style="border:1px dotted"/>
+                        }
+                    </div>
+    </div>
+   
+</div>
+
+
+

@@ -1,0 +1,159 @@
+﻿
+@model PakLawAdvisor.Models.lawyer
+@using PagedList
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "hy";
+    Layout = "~/Views/Shared/_PrivateLayout.cshtml";
+    }
+
+<div class="row">
+    
+    <div class="col-md-10 col-md-offset-1 section-top">
+        <h2>@Model.First_Name &nbsp; @Model.Second_Name</h2>
+    </div>
+    <div class="col-md-10 col-md-offset-1 section-body">
+
+        <div class="col-md-8 ">
+            <div>&nbsp;</div>
+            <div class=" row  "> <b> Detail </b> </div>
+            <div class=" row ">
+
+                <div class="col-md-offset-1 col-md-11">
+                    <div class="row">
+                        
+                        Email :@Model.EMAIL<br />
+                        Court Level :@Model.court_Level<br />
+                        Experience :@Model.Experience Year<br />
+                        From :@Model.Area <br />
+                        Date Of Birth : @Model.DOB<br />
+                        
+                    </div>
+                </div>
+                
+                <div>&nbsp;</div>
+                <div><hr style="border:1px solid #ECE9D3 " /></div>
+                <div class=" col-md-12 ">
+                     <div class="row ">
+                        <p style="min-height:100px">
+                            <strong>Objective </strong>
+                            @Model.Objective
+                        </p>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div><hr style="border:1px solid #ECE9D3 " /></div>
+                    <div class="row ">
+                        <p style="min-height:100px">
+                            <strong> Vision </strong>
+                            @Model.Vision
+                        </p>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div><hr style="border:1px solid #ECE9D3 " /></div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="row  ">
+                <div class="col-md-8 col-md-offset-2">
+                    
+                    <div class="row"><strong style="font-size:14px;text-align:center">@Model.First_Name &nbsp; @Model.Second_Name </strong></div>
+                    <div class="row"><img src="@Url.Content(@Model.photo)" border="2" alt="lawyer picture" width="190" height="160" style="align-content:center; border:5px solid #ECE9D3 " /></div>
+                    
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-offset-1 col-md-10" style="overflow: scroll ;max-height: 450px;">
+        <div class="row">
+            <div class="section-top"><h3>Articles Added By You</h3></div>
+            @if (@Model.case_exmpl.Count() == 0)
+            {
+                <div class="section-body"><h3>No Article Added By You </h3></div>
+            }
+        </div>
+       
+        @foreach (var cx in @Model.case_exmpl.OrderByDescending(m => m.Date_time))
+        {
+            <div class="row section-body">
+                <div class="col-md-offset-1 col-md-10">
+                    @cx.case_id
+                    <strong> @cx.Cat_name</strong><br />
+                    @cx.Summary<br />
+                    @cx.discription<br />
+                    @cx.Date_time<br />
+                    <p>.........................................</p>
+                </div>
+            </div><br />
+
+        }
+    </div>
+
+</div>
+
+
+
+
+
+@*
+    <fieldset>
+        <div class="row">
+            <div class="col-md-6" >
+                <div class="row">
+                    <div class="col-md-6 display-field">
+
+                        @Html.DisplayFor(model => model.ToList();
+                    </div>
+                </div>
+ <div class="row">
+                <div class="col-md-6 display-field">
+                    @Html.DisplayNameFor(model => model.Area)
+                    @Html.DisplayFor(model => model.Area)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 display-field">
+                    @Html.DisplayNameFor(model => model.Experience)
+                    @Html.DisplayFor(model => model.Experience)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 display-field">
+                    @Html.DisplayNameFor(model => model.court_Level)
+                    @Html.DisplayFor(model => model.court_Level)
+                   
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 display-field">
+                    Date of Birth
+                   @Html.DisplayFor(model => model.DOB)
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <img src="@Url.Content(@Model.photo)" alt="lawyer picture" style="width:55%" />
+        </div>
+    </div>
+    <legend>lawyer</legend>
+
+    
+        
+  
+</fieldset>
+<p>
+    @Html.ActionLink("Edit Profile", "Edit_Profile", new {  id=Model.lwr_id }) 
+    ...@Html.ActionLink("SignOut", "signOut","lawyer")
+</p>
+*@ 

@@ -1,0 +1,33 @@
+﻿
+
+@using (Html.BeginForm("SignIn", "user", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+
+    <div class="row" style="padding-bottom:5px;">
+        <span class="col-md-2"> <b>Email</b></span>
+        <div class="col-md-6 "><input name="email_login" class="form-control" id="email_login" type="email" required="required" /></div>
+        <div class="col-md-4"> @Html.ActionLink("SignUp", "SignUp", "user")</div>
+    </div>
+    <div class="row " style="padding-bottom:5px;">
+        <span class="col-md-2"><b> password</b></span>
+        <div class="col-md-6 "><input name="pass_login" class="form-control" id="pass_login" type="password" required="required" /></div>
+        <div class="col-md-4" style="text-align:match-parent"> @Html.ActionLink("Forget Password", "ForgetPassword", "user")</div>
+    </div>
+    <div class="row" style="padding-bottom:5px;">
+        <div class="col-md-3 col-md-offset-2 ">
+            <select id="domian" name="domain">
+                <option value="1">Lawyer</option>
+                <option value="2">Admin</option>
+            </select>
+        </div>
+        <div class="col-md-2 col-md-offset-1 ">
+            <input id="loginbtn" style="width:100%" type="submit" value="Login" />
+        </div>
+    </div>
+
+
+}

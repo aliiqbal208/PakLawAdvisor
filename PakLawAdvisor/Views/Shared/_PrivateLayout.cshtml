@@ -1,0 +1,91 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_PrivateLayout</title>
+    <link rel="stylesheet " href="~/bootstrap/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet " href="~/CSS/head.css" type="text/css" />
+</head>
+<body>
+    <div class="container" >
+        <header class="row" style="background-image:url(../../images/back_green.jpg); height:10%;">
+            <div class="col-md-2">
+                <img src="~/images/Logo.png" alt="PLA logo" />
+            </div>
+            <div class="col-md-10 ">
+                <div class="row">
+                    <div id="PLA_title" class="col-md-5 " style="padding-top:15px">
+                        Pak Law Adviser
+                    </div>
+
+                    <div class="col-md-6 col-md-offset-1">
+                        <div class="row" style="padding-top:15px">
+                            @*@Html.Partial("_signed_user", ViewData["User"])*@
+                            <div class="col-md-5 col-md-offset-1">@if (Session["UserId"] != null)
+                            {<strong style="float:right"> @ViewBag.lawyer.First_Name  @ViewBag.lawyer.Second_Name</strong>  }</div>
+                            <div class="col-md-5"><img src="@Url.Content(@ViewBag.lawyer.photo)" alt="lawyer picture" width="60" height="50" style="align-content:center; border:3px solid #ECE9D3 " /></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <nav class="row navbar-inverse">
+
+
+            <div class=" col-md-10 col-md-offset-1  " style="margin:auto;">
+                <div class="row " style="color:white">
+                    <div class="col-md-2 col-md-offset-1  nav-line ">@Html.ActionLink("Edit Profile", "Edit_Profile", "Lawyer", null, new { @class = "nav-bcolor" })</div>
+                    <div class="col-md-2 nav-line">@Html.ActionLink("Profile", "Lwr_Details", "Lawyer", null, new { @class = "nav-bcolor" }) </div>
+                    <div class="col-md-3 nav-line">@Html.ActionLink("Add New Record", "AddNewRecord", "Lawyer", null, new { @class = "nav-bcolor" })</div>
+                    <div class="col-md-3 nav-line ">@Html.ActionLink("Account Setting", "Account_Setting", "user",  null, new { @class = "nav-bcolor"  }) </div>
+                    <div class="col-md-1 nav-line">@Html.ActionLink("SignOut", "signOut", "user", null, new { @class = "nav-bcolor" }) </div>
+                </div>
+
+            </div>
+        </nav>
+        <section class="row" style="background-image:url(../../images/back_green.jpg); height:50%;">
+            <div class="col-md-12 " style="min-height:800px;">
+
+
+                @RenderBody()
+                @Scripts.Render("~/bundles/jquery")
+                @RenderSection("scripts", required: false)
+            </div>
+
+
+        </section>
+        <footer class="row section-body" style=" align-content:flex-end;">
+            <div class="col-md-12" style="color:white; background-color:#444161;height:20%">
+                <br />
+
+                <div class="row ">
+                    <div class="col-md-4 section-body" style="color:white; background-color:#444161;min-height:100px;height:auto;">
+                        Follow Us On :<br />
+                        <div class="row">
+                            <div class="col-md-1 col-md-offset-1">
+                                <a href="www.facebook.com/paklawadvisor" target="_blank" title=" PLA On Facebook"><img src="~/images/fbicon.jpg" width="35" height="35" alt="facebook"></a>
+                            </div>
+                            <div class="col-md-1 ">
+                                <a href="www.twitter.com" target="_blank" title=" PLA On Twitter"><img src="~/images/twicon.jpg" width="35" height="35" alt="twitter"></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 section-body " style=" color:white;background-color:#444161;min-height:100px;height:auto;">
+                        Contact us :<br />Mobile 0333-6655546<br /> ch.sufyan708@gmail.com<br />
+                    </div>
+                    <div class="col-md-4 section-body " style="color:white;background-color:#444161;min-height:100px;height:auto;">
+                        Pak Law Advisor
+                    </div>
+                </div>
+                <br />
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>

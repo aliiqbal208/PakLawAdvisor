@@ -1,0 +1,89 @@
+﻿@model PakLawAdvisor.Models.lawyer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>lawyer</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lwr_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lwr_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.First_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.First_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Second_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Second_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Area)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Area)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Experience)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Experience)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.court_Level)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.court_Level)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DOB)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DOB)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Licence_No)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Licence_No)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.photo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.photo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.catgry_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.catgry_id)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

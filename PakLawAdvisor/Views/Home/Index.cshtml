@@ -1,0 +1,153 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-md-8 " style="max-width:100%; ">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 section-body">
+                    <div class="row">
+                        <ul id="demo2">
+                            <li>
+                                <img src="images/slider/06.jpg" alt="" />
+                                <!--Slider Description example-->
+                                <div class="slide-desc">
+                                    <h2><u>@Html.ActionLink("Get Law Help", "GetLawHelp", "Home")</u></h2>
+                                    <p>PLA providing you a very helpful feature about pakistan Law. Using Law Help feature you can get
+                                    Help for batter understanding of Law @Html.ActionLink("More", "GetLawHelp", "Home")</p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="images/slider/02.jpg" alt="" />
+                                <div class="slide-desc">
+                                    <h2><u>@Html.ActionLink("Find Best Lawyer", "getbestlwr", "Home")</u></h2>
+                                    <p>PLA providing you a interface where you can find and hire your appropriate Best Lawyer from all over the Pakistan. @Html.ActionLink("More", "getbestlwr", "Home")</p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="images/slider/03.jpg" alt="" />
+                                <!--NO Description Here-->
+                                <div class="slide-desc">
+                                    <h2><u>@Html.ActionLink("Get Law Prediction", "GetLawPrediction")</u></h2>
+                                    <p>PLA unique feature provide you a platform to get prediction about your case. @Html.ActionLink("More", "GetLawPrediction")</p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="images/slider/dev.jpg" alt="" />
+                                <div class="slide-desc">
+                                    <h2><u>@Html.ActionLink("About Us", "AboutUs", "Home")</u></h2>
+                                    <p>A team is a family of Like-Minded. It may take decades or a moment to find one! @Html.ActionLink("More", "AboutUs", "Home")</p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="images/slider/05.jpg" alt="" />
+                            </li>
+                            @*<li>
+                                <img src="images/slider/01  .jpg" alt="" />
+                                <div class="slide-desc">
+                                    <h2>Slider Title 6</h2>
+                                    <p>Demo description here. Demo description here. Demo description here. Demo description here. Demo description here. <a class="more" href="#">more</a></p>
+                                </div>
+
+                            </li>*@
+                        </ul>
+                    </div>
+                    <br />
+                    <div class="row  section-top">Latest News in PLA </div>
+                    <div class="row section-body">
+                        <marquee behavior="scroll" direction="circler" id="marquee">
+                        @foreach (var v in ViewBag.news)
+                        {
+                            <label>
+                                <a @Url.Action("news_detail", new { id = @v.news_id })>@v.Title: @v.Summary</a>
+                          
+                             </label>
+                        }
+                            
+                        </marquee>
+                        </div>
+                        @*<div class="row section-body">
+            @foreach (var v in iewBag.news)
+            {<div class="col-md-12 section-body">
+                 <div class="row ">
+
+                             <b>   @v.Title: </b>
+                             @v.Summary
+                             @Html.ActionLink("view Detail>>", "news_detail", new { id = @v.news_id })
+                         </div>
+                 </div>
+                         }
+                     </div>*@
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-3  " style="background-color:white;">
+
+            <div class="row  section-top">Why PLA? </div>
+            <div class="row section-body ">
+                <div class="col-md-12">
+                    PLA Plateform provides a 
+                    easy way to Get Help about Criminal Laws
+                    and Find Best Lawyers for specific issue
+                    for particular City.There is a unique
+                    feature Get Law Prediction which allow
+                    to predict about your case.We have a team
+                    of professinal Lawyers Firm.
+                    <p>&nbsp;</p>
+                </div>
+                <br />
+            </div>
+            <br/>
+            <div class="row  section-top">List of Books </div>
+            <div class="row section-body">
+                <div class="col-md-8 section-body">
+                     
+                    Book Name
+                </div>
+                <div class="col-md-4 section-body">
+                    Download
+
+                </div>
+              </div>
+             
+
+                    @foreach (var item in ViewBag.books)
+                    {
+                        <div class="row section-body">
+                            <div class="col-md-8 section-body">
+
+                                @item.name
+                            </div>
+                            <div class="col-md-4 section-body">
+                                @Html.ActionLink("Download", "Download", new { id = item.Book_id })
+
+                            </div>
+                        </div>
+
+
+
+                    }
+
+                
+            </div>
+
+        </div>
+
+
+    
+    <br />
+
+    <h4>PAK LAW ADVISER</h4>
+
+</body>
+</html>

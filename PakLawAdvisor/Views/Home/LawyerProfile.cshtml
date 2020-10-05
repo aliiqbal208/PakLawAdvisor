@@ -1,0 +1,95 @@
+﻿
+@model PakLawAdvisor.Models.lawyer
+@{
+    ViewBag.Title = "LawyerProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 section-top">
+        <h2>@Model.First_Name &nbsp; @Model.Second_Name</h2>
+    </div>
+    <div class="col-md-10 col-md-offset-1 section-body">
+
+        <div class="col-md-8 ">
+            <div class=" row  "> <b>Profile Detail </b> </div>
+            <div class=" row ">
+
+                <div class="col-md-offset-1 col-md-11">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            Court Level :@Model.court_Level<br />
+                            Experience :@Model.Experience<br />
+                            From :@Model.Area <br />
+                            Date Of Birth : @Model.DOB<br />
+                            @Model.Objective
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class=" col-md-12 ">
+                    <br /> <div class="row ">
+                        <p style="min-height:100px">
+                            <strong>Objective :</strong>
+                            @Model.Objective
+                        </p>
+                    </div>
+                    <div class="row ">
+                        <p style="min-height:100px">
+                            <strong> Vision :</strong>
+                            @Model.Vision
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="row  ">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="row">
+                        <img src="@Url.Content(@Model.photo)" border="2" alt="lawyer picture" width="180" style=" border: 5px solid #ECE9D3;"/>
+                    </div>
+                    <div class="row">
+                        <b>@Model.First_Name &nbsp; @Model.Second_Name</b>
+                        
+                        (From : <b>@Model.Area</b>)
+                    </div>
+                    
+
+                </div>
+                
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-offset-1 col-md-10 section-body" style="overflow: scroll ;max-height: 450px; min-height:200px">
+        <div class="row">
+            <div class="section-top"><h3>Articles Added By this Lawyer</h3></div>
+        </div>
+        @foreach (var cx in @Model.case_exmpl.OrderByDescending(m => m.Date_time))
+        {
+            <div class="row section-body">
+                <div class="col-md-offset-1 col-md-10">
+                    @cx.case_id
+                    <strong> @cx.Cat_name</strong><br />
+                    @cx.Summary<br />
+                    @cx.discription<br />
+                    @cx.Date_time<br />
+                    <p>.........................................</p>
+                </div>
+            </div><br />
+
+        }
+    </div>
+
+</div>
+
+

@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Add_news";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Add_news</h2>
+<div class="row">
+    <article class="col-md-7 col-md-offset-1" style="background-color:rgb(224, 224, 224);">
+        <br /><br />
+        @using (Html.BeginForm("addnewrecord", "lawyer", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Select Category: </label>
+                </div>
+                <div class="col-md-4 ">
+                   
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Summary</label>
+                </div>
+                <div class="col-md-8" id="summary">
+                    @Html.TextBox("summary", new { required = "required", Style = "width:300px;" })
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Description</label>
+                </div>
+                <div class="col-md-9" id="description">
+                    @Html.TextArea("addDescription", new { @class = "form-control", required = "required", Style = "height:200px;width:300px;" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-push-3">
+                    <input id="Submit" type="submit" value="Add Record" />
+                </div>
+            </div>}
+        @ViewBag.message
+        <br /><br />
+    </article>
+</div>

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<PakLawAdvisor.Models.lawyer>
+@foreach (var lwr in Model)
+{
+   
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3" style="border-bottom-left-radius:2px; background-color:aqua">
+
+            <b>   @lwr.First_Name &nbsp; @lwr.Second_Name  </b>
+            <br />
+            <label>Court Level:</label>
+            @lwr.court_Level <br />
+            <label>City:</label>
+            @lwr.Area <br />
+        </div>
+        <div class="col-md-2 col-md-offset-1" style="background-color:lightgray;">
+            <img src="@Url.Content(@lwr.photo)" alt="lawyer picture" style="width:100%" />
+        </div>
+
+    </div><br />
+}

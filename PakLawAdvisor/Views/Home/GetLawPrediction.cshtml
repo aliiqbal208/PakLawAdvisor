@@ -1,0 +1,237 @@
+﻿@{
+    ViewBag.Title = "GetLawPrediction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row ">
+    <div class="col-md-10 col-md-offset-1 section-top">
+        <div class="col-md-3 col-md-offset-1">
+            <label> Prediction as a:</label>
+        </div>
+        <div class="col-md-4">
+
+            <label> <input type="radio" name='thing' value='valuable' id="bank" onclick="show1()" />Complainant</label>
+            <label><input type="radio" name='thing' value='valuable' id="school" onclick="show2()" />Suspect</label>
+
+        </div><br /><br />
+    </div>
+
+</div>
+
+
+<style>
+    .none {
+        display: none;
+    }
+    .showDIV {
+        display: block;
+    }
+</style>
+<div class="row none " id="1DIV">
+    <div class="col-md-10 col-md-offset-1 section-body">
+        @using (Html.BeginForm("GetLawPredictionComp", "home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="row">
+                <br />
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label> Select case category</label>
+                    </div>
+                    <div class="col-md-4 ">
+                        @Html.DropDownList("crime", (SelectList)ViewBag.crim_list_dp, "Select case Type", new { id = "crime", @required = "required", @class = "form-control" })
+                    </div>
+                </div><br /><br />
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label> Have any witness?</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label>@Html.RadioButton("IS_Witness", new { id = "IsComplainant" ,value="1"}) Yes</label>
+                        <label>   @Html.RadioButton("IS_Witness", new { id = "IsSuspect", value = "2" }) No</label>
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>Number of witness?</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label><input type="radio" id="witnes" name="witness" value="0" /> None</label>&nbsp;&nbsp;
+                        <label><input type="radio" id="witnes" name="witness" value="1" /> One </label>&nbsp;&nbsp;
+                        <label><input type="radio" id="witnes" name="witness" value="2" /> Two</label>&nbsp;&nbsp;
+                        <label><input type="radio" id="witnes" name="witness" value="3" /> More</label>&nbsp;&nbsp;
+
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>Witness is relitive?</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label><input type="radio" id="IsRelitive" name="IsRelitive" value="1" /> Yes</label>
+                        <label> <input type="radio" id="IsRelitive" name="IsRelitive" value="2" /> No</label>
+                        <label> <input type="radio" id="IsRelitive" name="IsRelitive" value="3" /> Both</label>
+                    </div>
+                </div><br />
+
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>Have any other evidence like vedio(cctv) ,Mobile call or Recording?</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label><input type="radio" id="HaveWitness" name="other_evidence" value="1" />Yes</label>
+                        <label> <input type="radio" id="NoWitness" name="other_evidence" value="2" />No</label>
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <label>Can you give Oath Statement in your defence?</label>
+                    </div>
+                    <div class="col-md-1">
+                        <label><input type="radio" id="HaveStatement" name="Statement" value="1" />Yes</label>
+
+                    </div>
+                    <div class="col-md-1">
+
+                        <label> <input type="radio" id="NoStatementn" name="Statement" value="2" />No</label>
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-4">
+                        <input type="submit" value="Get Prediction" class="btn-primary" />
+                    </div>
+                </div><br /><br />
+
+
+
+
+            </div>
+
+        }
+
+
+    </div>
+
+
+</div>
+<div class="row none" id="2DIV" >
+    <div class="col-md-10 col-md-offset-1 section-body">
+        @using (Html.BeginForm("GetLawPredictionSuspected", "home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label> Select case category</label>
+                    </div>
+                    <div class="col-md-4 ">
+                        @Html.DropDownList("crime", (SelectList)ViewBag.crim_list_dp, "Select case Type", new { id = "crime", @required = "required", @class = "form-control" })
+                    </div>
+                </div><br /><br />
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>Do you Have any Personal Conflict with  Complainent ?</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label><input type="radio" id="IS_Conflictyes" name="IS_Conflict" value="1" /> Yes</label>
+                        <label> <input type="radio" id="IS_ConflictNO" name="IS_Conflict" value="2" /> No</label>
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>Were you present at Crime Place ?</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label><input type="radio" id="IsAtCrimePlaceyes" name="IsAtCrimePlace" value="1" /> Yes</label>&nbsp;&nbsp;
+                        <label><input type="radio" id="IsAtCrimePlaceno" name="IsAtCrimePlace" value="2" /> NO </label>&nbsp;&nbsp;
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>Are you being accussed on basis of any evidence?</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label><input type="radio" id="IsEvidence" name="IsEvidence" value="1" /> Yes</label>
+                        <label> <input type="radio" id="IsDoubt" name="IsEvidence" value="2" /> No</label>
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <label>Are you Previously involved in any crimanal activity?</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label><input type="radio" id="IsCrimanalY" name="IsCrimanal" value="1" /> Yes</label>
+                        <label> <input type="radio" id="IsCrimanalN" name="IsCrimanal" value="2" /> No</label>
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <label>Do you Have Any proof witness or evidance in your defence?</label>
+                    </div>
+                    <div class="col-md-1">
+                        <label><input type="radio" id="HaveWitness" name="other_evidence" value="1" />Yes</label>
+
+                    </div>
+                    <div class="col-md-1">
+
+                        <label> <input type="radio" id="NoWitness" name="other_evidence" value="2" />No</label>
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <label>Can you give Oath Statement in your defence?</label>
+                    </div>
+                    <div class="col-md-1">
+                        <label><input type="radio" id="HaveStatement" name="Statement" value="1" />Yes</label>
+
+                    </div>
+                    <div class="col-md-1">
+
+                        <label> <input type="radio" id="NoStatementn" name="Statement" value="2" />No</label>
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-8">
+                        <input type="submit" value="Get Prediction" class="btn-primary" />
+                    </div>
+                </div><br /><br />
+
+
+
+            </div>
+        }
+
+    </div>
+
+
+</div>
+    
+
+  
+<script src="~/Content/js/jquery-1.9.1.js"></script>
+
+<script>
+
+    function show1() {
+        $("#1DIV").removeClass("none");
+        $("#1DIV").addClass("showDIV");
+
+        //Make sure schoolDIV is not visible
+        $("#2DIV").removeClass("showDIV");
+        $("#2DIV").addClass("none");
+    }
+
+    function show2() {
+        $("#2DIV").removeClass("none");
+        $("#2DIV").addClass("showDIV");
+
+        //Make sure bankDIV is not visible
+        $("#1DIV").removeClass("showDIV");
+        $("#1DIV").addClass("none");
+    }
+</script>

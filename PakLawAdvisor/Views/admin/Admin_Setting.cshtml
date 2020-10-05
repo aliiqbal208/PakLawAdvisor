@@ -1,0 +1,24 @@
+﻿<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@{
+    ViewBag.Title = "AccountSetting";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>Account Settings!</h2>
+    <div class="row ">
+        <div class="col-md-3">
+            @Ajax.ActionLink("Change Password", "changepswd", new AjaxOptions()
+                {
+                    HttpMethod = "GET",
+                    UpdateTargetId = "changepass",
+                    InsertionMode = InsertionMode.Replace
+                })
+        </div>
+        
+
+    </div>
+    <div id="changepass"> </div>
+

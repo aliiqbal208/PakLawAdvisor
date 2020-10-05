@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pladbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PLAdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="lawyers" EntityType="pladbModel.lawyer" />
+    <EntitySet Name="civil_law_panel" EntityType="pladbModel.civil_law_panel" />
+    <EntitySet Name="law_catagry" EntityType="pladbModel.law_catagry" />
+    <EntitySet Name="lwr_catgry" EntityType="pladbModel.lwr_catgry" />
+    <AssociationSet Name="fk_lwrcat_cat" Association="pladbModel.fk_lwrcat_cat">
+      <End Role="law_catagry" EntitySet="law_catagry" />
+      <End Role="lwr_catgry" EntitySet="lwr_catgry" />
+    </AssociationSet>
+    <AssociationSet Name="fk_lwrcat_lwr" Association="pladbModel.fk_lwrcat_lwr">
+      <End Role="lawyer" EntitySet="lawyers" />
+      <End Role="lwr_catgry" EntitySet="lwr_catgry" />
+    </AssociationSet>
+    <EntitySet Name="case_exmpl" EntityType="pladbModel.case_exmpl" />
+    <AssociationSet Name="fk_case_cat1" Association="pladbModel.fk_case_cat1">
+      <End Role="law_catagry" EntitySet="law_catagry" />
+      <End Role="case_exmpl" EntitySet="case_exmpl" />
+    </AssociationSet>
+    <EntitySet Name="admins" EntityType="pladbModel.admin" />
+    <EntitySet Name="ccps" EntityType="pladbModel.ccp" />
+    <EntitySet Name="users" EntityType="pladbModel.user" />
+    <AssociationSet Name="fk_lwr_caseExample" Association="pladbModel.fk_lwr_caseExample">
+      <End Role="lawyer" EntitySet="lawyers" />
+      <End Role="case_exmpl" EntitySet="case_exmpl" />
+    </AssociationSet>
+    <EntitySet Name="cities" EntityType="pladbModel.city" />
+    <EntitySet Name="states" EntityType="pladbModel.state" />
+    <AssociationSet Name="city_to_state" Association="pladbModel.city_to_state">
+      <End Role="state" EntitySet="states" />
+      <End Role="city" EntitySet="cities" />
+    </AssociationSet>
+    <EntitySet Name="books1" EntityType="pladbModel.books" />
+    <AssociationSet Name="law_cat_ccp_fk" Association="pladbModel.law_cat_ccp_fk">
+      <End Role="law_catagry" EntitySet="law_catagry" />
+      <End Role="ccp" EntitySet="ccps" />
+    </AssociationSet>
+    <EntitySet Name="news" EntityType="pladbModel.news" />
+    <AssociationSet Name="admin_news" Association="pladbModel.admin_news">
+      <End Role="admin" EntitySet="admins" />
+      <End Role="news" EntitySet="news" />
+    </AssociationSet>
+    <AssociationSet Name="user_to_lawyer" Association="pladbModel.user_to_lawyer">
+      <End Role="user" EntitySet="users" />
+      <End Role="lawyer" EntitySet="lawyers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="lawyer">
+    <Key>
+      <PropertyRef Name="lwr_id" />
+    </Key>
+    <Property Name="lwr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Second_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="court_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" />
+    <Property Name="Licence_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="catgry_id" Type="Int32" />
+    <NavigationProperty Name="lwr_catgry" Relationship="pladbModel.fk_lwrcat_lwr" FromRole="lawyer" ToRole="lwr_catgry" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="case_exmpl" Relationship="pladbModel.fk_lwr_caseExample" FromRole="lawyer" ToRole="case_exmpl" />
+    <Property Name="Vision" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Objective" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="User_id" Type="Int32" />
+    <NavigationProperty Name="user" Relationship="pladbModel.user_to_lawyer" FromRole="lawyer" ToRole="user" />
+  </EntityType>
+  <EntityType Name="civil_law_panel">
+    <Key>
+      <PropertyRef Name="civil_law_id" />
+    </Key>
+    <Property Name="civil_law_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="law_catagry">
+    <Key>
+      <PropertyRef Name="Law_cat_id" />
+    </Key>
+    <Property Name="Law_cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="catgry_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="lwr_catgry" Relationship="pladbModel.fk_lwrcat_cat" FromRole="law_catagry" ToRole="lwr_catgry" />
+    <NavigationProperty Name="case_exmpl" Relationship="pladbModel.fk_case_cat1" FromRole="law_catagry" ToRole="case_exmpl" />
+    <NavigationProperty Name="ccps" Relationship="pladbModel.law_cat_ccp_fk" FromRole="law_catagry" ToRole="ccp" />
+  </EntityType>
+  <EntityType Name="lwr_catgry">
+    <Key>
+      <PropertyRef Name="lwr_cat_id" />
+    </Key>
+    <Property Name="lwr_cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lwr_id" Type="Int32" />
+    <Property Name="cat_id" Type="Int32" />
+    <NavigationProperty Name="law_catagry" Relationship="pladbModel.fk_lwrcat_cat" FromRole="lwr_catgry" ToRole="law_catagry" />
+    <NavigationProperty Name="lawyer" Relationship="pladbModel.fk_lwrcat_lwr" FromRole="lwr_catgry" ToRole="lawyer" />
+  </EntityType>
+  <Association Name="fk_lwrcat_cat">
+    <End Type="pladbModel.law_catagry" Role="law_catagry" Multiplicity="0..1" />
+    <End Type="pladbModel.lwr_catgry" Role="lwr_catgry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="law_catagry">
+        <PropertyRef Name="Law_cat_id" />
+      </Principal>
+      <Dependent Role="lwr_catgry">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_lwrcat_lwr">
+    <End Type="pladbModel.lawyer" Role="lawyer" Multiplicity="0..1" />
+    <End Type="pladbModel.lwr_catgry" Role="lwr_catgry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lawyer">
+        <PropertyRef Name="lwr_id" />
+      </Principal>
+      <Dependent Role="lwr_catgry">
+        <PropertyRef Name="lwr_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="case_exmpl">
+    <Key>
+      <PropertyRef Name="case_id" />
+    </Key>
+    <Property Name="case_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date_time" Type="DateTime" />
+    <Property Name="discription" Type="String" MaxLength="1050" FixedLength="false" Unicode="false" />
+    <Property Name="cat_id" Type="Int32" />
+    <NavigationProperty Name="law_catagry" Relationship="pladbModel.fk_case_cat1" FromRole="case_exmpl" ToRole="law_catagry" />
+    <Property Name="lwr_id" Type="Int32" />
+    <NavigationProperty Name="lawyer" Relationship="pladbModel.fk_lwr_caseExample" FromRole="case_exmpl" ToRole="lawyer" />
+    <Property Name="Cat_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Summary" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="fk_case_cat1">
+    <End Type="pladbModel.law_catagry" Role="law_catagry" Multiplicity="0..1" />
+    <End Type="pladbModel.case_exmpl" Role="case_exmpl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="law_catagry">
+        <PropertyRef Name="Law_cat_id" />
+      </Principal>
+      <Dependent Role="case_exmpl">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fname" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="lname" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="news" Relationship="pladbModel.admin_news" FromRole="admin" ToRole="news" />
+  </EntityType>
+  <EntityType Name="ccp">
+    <Key>
+      <PropertyRef Name="CCP_id" />
+    </Key>
+    <Property Name="CCP_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sec_id" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="Offence" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="Arrestable" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="warrentable" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="bailable" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="Compoundable" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="punishment" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="tryable_court" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="crime_cat_id" Type="Int32" />
+    <NavigationProperty Name="law_catagry" Relationship="pladbModel.law_cat_ccp_fk" FromRole="ccp" ToRole="law_catagry" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="Usr_id" />
+    </Key>
+    <Property Name="Usr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Second_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Domain" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="lawyers" Relationship="pladbModel.user_to_lawyer" FromRole="user" ToRole="lawyer" />
+  </EntityType>
+  <Association Name="fk_lwr_caseExample">
+    <End Type="pladbModel.lawyer" Role="lawyer" Multiplicity="0..1" />
+    <End Type="pladbModel.case_exmpl" Role="case_exmpl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lawyer">
+        <PropertyRef Name="lwr_id" />
+      </Principal>
+      <Dependent Role="case_exmpl">
+        <PropertyRef Name="lwr_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="City_Id" />
+    </Key>
+    <Property Name="City_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Province_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State_id" Type="Int32" />
+    <NavigationProperty Name="state" Relationship="pladbModel.city_to_state" FromRole="city" ToRole="state" />
+  </EntityType>
+  <EntityType Name="state">
+    <Key>
+      <PropertyRef Name="State_id" />
+    </Key>
+    <Property Name="State_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="State_Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cities" Relationship="pladbModel.city_to_state" FromRole="state" ToRole="city" />
+  </EntityType>
+  <Association Name="city_to_state">
+    <End Type="pladbModel.state" Role="state" Multiplicity="0..1" />
+    <End Type="pladbModel.city" Role="city" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="state">
+        <PropertyRef Name="State_id" />
+      </Principal>
+      <Dependent Role="city">
+        <PropertyRef Name="State_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="books">
+    <Key>
+      <PropertyRef Name="Book_id" />
+    </Key>
+    <Property Name="Book_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="file" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="law_cat_ccp_fk">
+    <End Type="pladbModel.law_catagry" Role="law_catagry" Multiplicity="0..1" />
+    <End Type="pladbModel.ccp" Role="ccp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="law_catagry">
+        <PropertyRef Name="Law_cat_id" />
+      </Principal>
+      <Dependent Role="ccp">
+        <PropertyRef Name="crime_cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="news">
+    <Key>
+      <PropertyRef Name="news_id" />
+    </Key>
+    <Property Name="news_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="discription" Type="String" MaxLength="3200" FixedLength="false" Unicode="false" />
+    <Property Name="date_time" Type="DateTime" />
+    <Property Name="Summary" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="admin" Relationship="pladbModel.admin_news" FromRole="news" ToRole="admin" />
+  </EntityType>
+  <Association Name="admin_news">
+    <End Type="pladbModel.admin" Role="admin" Multiplicity="0..1" />
+    <End Type="pladbModel.news" Role="news" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="admin">
+        <PropertyRef Name="admin_id" />
+      </Principal>
+      <Dependent Role="news">
+        <PropertyRef Name="Admin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_to_lawyer">
+    <End Type="pladbModel.user" Role="user" Multiplicity="0..1" />
+    <End Type="pladbModel.lawyer" Role="lawyer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Usr_id" />
+      </Principal>
+      <Dependent Role="lawyer">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

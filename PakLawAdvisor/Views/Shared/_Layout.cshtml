@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    <script src="~/Scripts/jquery.min.js"></script>
+        <link rel="stylesheet " href="~/bootstrap/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet " href="~/CSS/head.css" type="text/css" />
+        <link href="~/src/font_Faimly.css" rel='stylesheet' type='text/css' />
+        <link href="~/src/skdslider.css" type="text/css" rel="stylesheet" />    
+        <script src="~/src/jquery.js" type="text/javascript"></script>
+        <script src="~/src/skdslider.min.js" type="text/javascript"></script>
+        <script src="~/Content/predictionchart/Chart.js"></script>
+        <script type="text/javascript">
+
+
+
+
+            var j = jQuery.noConflict();
+            jQuery(document).ready(function () {
+                
+			            j('#demo1').skdslider({delay:5000, animationSpeed: 2000,showNextPrev:true,showPlayButton:true,autoSlide:true,animationType:'fading'});
+			            j('#demo2').skdslider({delay:5000, animationSpeed: 1000,showNextPrev:true,showPlayButton:false,autoSlide:true,animationType:'sliding'});
+			            j('#demo3').skdslider({delay:5000, animationSpeed: 2000,showNextPrev:true,showPlayButton:true,autoSlide:true,animationType:'fading'});
+
+			            jQuery('#responsive').change(function(){
+			              $('#responsive_wrapper').width(jQuery(this).val());
+			              $(window).trigger('resize');
+			            });
+              
+
+		            });
+        </script>
+        <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .demo-code {
+                background-color: #ffffff;
+                border: 1px solid #333333;
+                display: block;
+                padding: 10px;
+            }
+
+            .option-table td {
+                border-bottom: 1px solid #eeeeee;
+            }
+        </style>
+    </head>
+<body>
+    
+
+   
+
+    
+        <div class="container">
+            <header class="row" style="background-image:url(../../images/back_green.jpg); height:10%;">
+                <div class="col-md-2">
+                    <img src="~/images/Logo.png" alt="PLA logo"  />
+                </div>
+                <div class="col-md-10 ">
+                    <div class="row">
+                        <div id="PLA_title" class="col-md-5 " style="padding-top:15px">
+                            Pak Law Adviser
+                        </div>
+                 
+                        <div class="col-md-6 col-md-offset-1">
+                            @if (Session["AdminId"] == null || Session["UserId"]==null)
+                            { 
+                            <div class="row" style="padding-top:15px">
+                                @Html.Partial("SignInp")
+
+                            </div> }
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <nav class="row navbar-inverse" >
+
+                <div class=" col-md-9 " style="margin:auto;">
+                    <div class="row ">
+                        <div class="col-md-1 nav-line ">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-bcolor " })</div>
+                        <div class="col-md-2 nav-line" >@Html.ActionLink("Get Law Help", "GetLawHelp", "Home", null, new { @class = "nav-bcolor " }) </div>
+                        <div class="col-md-3 nav-line" >@Html.ActionLink("Find Best Lawyer", "getbestlwr", "Home", null, new { @class = "nav-bcolor " })</div>
+                        <div class="col-md-3 nav-line ">@Html.ActionLink("Get Law Prediction", "GetLawPrediction", "Home", null, new { @class = "nav-bcolor " }) </div>
+                        <div class="col-md-2 nav-line" >@Html.ActionLink("AboutUs", "AboutUs", "Home", null, new { @class = "nav-bcolor " }) </div>
+                    </div>
+                   
+                </div>
+               @using(Html.BeginForm("StartSearch","PLAsearch",FormMethod.Post)){
+               
+                
+                <div class=" col-md-2" style="padding-right:0px; ">
+                    <input type="text" name="search_field" class="form-control" style="width:100%;padding-right:0px; border:0px solid; " />
+                </div>
+                <div class="col-md-1" style="padding-left:0px;">
+                    <input type="submit" class="btn-info form-control" value="search" />
+                </div>
+               }
+            </nav>
+           
+            <section class="row section-css">
+
+                <div class="col-md-12 " style="background-image:url(../../images/back_green.jpg);min-height:650px;height:auto;">
+
+                    <br /><br />
+                    @RenderBody()
+                    @Scripts.Render("~/bundles/jquery")
+                    @RenderSection("scripts", required: false)
+
+                </div>
+
+
+            </section>
+            <footer class="row section-body" style=" align-content:flex-end;">
+                <div class="col-md-12" style="color:white; background-color:#444161;height:20%">
+                    <br />
+
+                    <div class="row ">
+                        <div class="col-md-4 section-body" style="color:white; background-color:#444161;min-height:100px;height:auto;">
+                            Follow Us On :<br />
+                            <div class="row">
+                                <div class="col-md-1 col-md-offset-1">
+                                    <a href="www.facebook.com/paklawadvisor" target="_blank" title=" PLA On Facebook"><img src="~/images/fbicon.jpg" width="35" height="35" alt="facebook"></a>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <a href="www.twitter.com" target="_blank" title=" PLA On Twitter"><img src="~/images/twicon.jpg" width="35" height="35" alt="twitter"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 section-body " style=" color:white;background-color:#444161;min-height:100px;height:auto;">
+                            Contact us :<br />Mobile 0333-6655546<br /> ch.sufyan708@gmail.com<br />
+                        </div>
+                        <div class="col-md-4 section-body " style="color:white;background-color:#444161;min-height:100px;height:auto;">
+                            Powered By:
+                            Pak Law Advisor<br />
+                            Members:<br />
+                            Sufyan Ahmad  (0333-6655546)<br />
+                            Muhammad Ali  (0321-2081994)<br />
+                            M Jawad Mahmood (0322-7610567)
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

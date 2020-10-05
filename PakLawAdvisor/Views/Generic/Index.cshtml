@@ -1,0 +1,60 @@
+﻿@using (Html.BeginForm())
+{
+    <div>Select State:</div>
+    @Html.DropDownList("state",(SelectList)ViewBag.statevalues )
+    /*<div>
+        <select name="state" id="state">
+            <option value="Azad kashmir">Azad kashmir</option>
+            <option value="Balochistan">Balochistan</option>
+            <option value="gilgata & Fedral Areas">gilgata & Fedral Areas</option>
+            <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Sindh">Sindh</option>
+            ...
+        </select>
+</div>*/
+    <div>Select city:</div>
+    <div>
+        <select id="city" ></select>
+    </div>
+    <input type="submit" value="Submit" />
+}
+
+
+@section scripts
+{
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#state').on('change', function () {
+                var cityDropdown = $('#city');
+
+                cityDropdown.empty();
+                var state = $(this).val();
+               // document.write(state);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetCities","Generic")', // we are calling json method
+                    dataType: 'json',
+                    data: { id: state },
+                    success: function (cities) {
+                        // states contains the JSON formatted list // of states passed from the controller
+
+                        $.each(cities, function (i, cities) {
+                            $("#cities").append('<option value="' + cities.value + '">' +
+                                 cities.Text + '</option>');
+                            // here we are adding option for States
+                        })
+                    }
+                });
+                //if (state.length > 0) {     
+
+
+
+            });
+        });
+</script>
+}

@@ -1,0 +1,85 @@
+﻿@model PakLawAdvisor.Models.citation
+@{
+    ViewBag.Title = "AddCitation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddCitation</h2>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 section-top">ADD Citation</div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1 section-body" style="min-height:600px;overflow:scroll">
+        @using (Html.BeginForm("AddCitation", "Citation", FormMethod.Post))
+        {<div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <h4> Select related case: </h4>
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(model => model.CAT_ID, (SelectList)ViewBag.crime_list, "Select Crime type",
+                                new { @class = "form-control", id = "crime" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <h4> Title </h4>
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.TITLE, new { @class = "form-control", id = "title" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <h4> Complain by: </h4>
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.COMPLAINENT_NAME, new { @class = "form-control", id = "compainent" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <h4> Suspect by: </h4>
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.SUSPECTED_NAME, new { @required = "required", @class = "form-control", id = "SUSPECTED" })
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <h4> Add Detail </h4>
+                </div>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(model => model.DETAIL, new { @class = "form-control", id = "SUSPECTED" })
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+                    <h4> Successfull </h4>
+                </div>
+                <div class="col-md-4">
+                    <label> Complainent @Html.RadioButtonFor(model => model.RESULT, "1", new { @required = "required" })</label>
+                    <label> Suspected @Html.RadioButtonFor(model => model.RESULT, "2", new { @required = "required" })</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2">
+
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" class="btn-primary" value="Add Citation" />
+                </div>
+            </div>
+        }
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>

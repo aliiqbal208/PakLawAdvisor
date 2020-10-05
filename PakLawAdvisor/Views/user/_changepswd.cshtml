@@ -1,0 +1,54 @@
+﻿
+    <script type="text/javascript">
+
+    function checkPasswordMatch() {
+        var password = $("#NewPassword").val();
+        var confirmPassword = $("#ConfirmPassword").val();
+
+        if (password != confirmPassword)
+            $("#divCheckPasswordMatch").html("Passwords do not match!");
+        else
+            $("#divCheckPasswordMatch").html("Passwords match.");
+    }
+</script>
+@using (Html.BeginForm("Account_setting", "user", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <br/>
+        <div class="col-md-4 col-md-offset-1">
+            <label>old password</label>
+        </div>
+        <div class="col-md-4">
+            <input type="password" name="oldpassword" id="oldpassword" required="required">
+        </div>
+    </div>
+        <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+            <label>new password</label>
+        </div>
+        <div class="col-md-4">
+            <input type="password" name="newpassword" id="NewPassword" required="required">
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+            <label>Confirm password</label>
+        </div>
+        <div class="col-md-4">
+            <input type="password" name="cofirmpassword" id="ConfirmPassword" onkeyup="checkPasswordMatch();" required="required">
+        </div>
+        <div class="registrationFormAlert col-md-2" id="divCheckPasswordMatch">
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-6">
+            <input type="submit" value="save change" />
+        </div>
+    </div>
+    @ViewBag.message;
+}
